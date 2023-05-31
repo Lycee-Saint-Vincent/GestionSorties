@@ -1,0 +1,692 @@
+/*Général*/
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, serif;
+    text-align: center;
+}
+
+p {
+    font-size: 1.25em;
+}
+
+h1 {
+    margin: 1em 0 0.5em;
+}
+
+li {
+    list-style: none;
+}
+
+form {
+    font-size: 30px;
+    padding: 0 0 10px 0;
+    display: flex;
+    justify-content: center;
+}
+
+label {
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+a, a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.dessert {
+    margin-bottom: 15px;
+}
+
+.help-text {
+    font-size: 13px;
+    margin: 0;
+    font-style: italic;
+}
+
+.help-text2 {
+    font-size: 18px;
+    margin: 0;
+    text-align: left;
+}
+
+#screenLeft {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+#screenRight {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+}
+
+#warning {
+    color: red;
+    border: solid;
+    position: relative;
+}
+
+#warning p {
+    font-size: 35px;
+}
+
+#btnAjout, #btnRetour, .btn.btn-success {
+    padding: 10px;
+    font-size: 15px;
+}
+
+.flash-success {
+    font-size: 25px;
+    color: green;
+}
+
+.noDisplay {
+    display: none;
+}
+
+.modal-dialog, menu {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    max-width: none!important;
+}
+
+/*Barre de navigation*/
+
+nav p, nav ul {
+    margin: 0;
+}
+
+.nav-link {
+    color: white !important;
+    margin: 0 0.5em;
+}
+
+.navbar-nav {
+    flex-direction: row;
+}
+
+.dropdown-toggle::after {
+    bottom: 5px;
+    margin: 0;
+    position: relative;
+}
+
+#connexion a:hover {
+    text-decoration: none;
+}
+
+#connexion p {
+    display: inline;
+    margin: 0 5px;
+    position: relative;
+}
+
+#connexion i {
+    font-size: 25px;
+}
+
+.fa-user-circle:before {
+    display: flex;
+    justify-content: center;
+}
+
+li#dropdownNav {
+    margin-left: 2rem;
+}
+
+#dropdownProfile li:hover {
+    color: white;
+    background-color: gainsboro;
+}
+
+#dropdownProfile li a, #dropdownNav li a {
+    color: black;
+    font-size: 15px;
+}
+
+nav#mainNav {
+    padding: 8px;
+    background-color: #1E2B47;
+}
+
+#mainNav div.container-fluid {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: unset;
+}
+
+.navbar .navbar-item {
+    color: white;
+}
+
+.navbar-brand img {
+    height: 60px;
+}
+
+/** Footer  **/
+
+footer {
+    background-color: #1E2B47;
+    color: white;
+    list-style: none;
+    margin-top: 10%;
+    text-align: -webkit-center;
+}
+
+footer a, nav a, a.btn {
+    color: white;
+    text-decoration: none;
+}
+
+footer i {
+    font-size: 26px;
+}
+
+footer ol {
+    margin: 0;
+    padding: 0;
+}
+
+div#footerContent {
+    display: flex;
+    justify-content: center;
+}
+
+.coordonnees, .contact, .access, .networks {
+    display: inline-table;
+    padding: 35px;
+    text-align: left;
+}
+
+.coordonnees p, .contact p, .access p {
+    text-align: left;
+    font-size: 13px;
+    margin: 0;
+}
+
+.coordonnees h3, .contact h3, .access h3, .networks h3 {
+    text-align: left;
+    font-size: 17px;
+    margin-bottom: 25px;
+    font-weight: 900;
+}
+
+/*Page d'accueil */
+
+#formMenu form {
+    flex-direction: column;
+}
+
+#menuImg {
+    height: 25em;
+    margin-bottom: 3em;
+}
+
+#menuImgModal {
+    height: 30em;
+}
+
+#btnModal {
+    font-size: 15px;
+    padding: 20px;
+}
+
+.btn-close {
+    font-size: 15px;
+}
+
+.modal-footer button {
+    font-size: 15px;
+    padding: 20px;
+}
+
+#fileInputUser input {
+    font-size: 15px;
+}
+
+iframe {
+    width: 70%;
+    height: 500px;
+}
+
+@media screen and (max-width: 968px) {
+    iframe {
+        width: 100%;
+        height: 500px;
+    }
+}
+
+@media screen and (max-width: 652px) {
+    iframe {
+        width: 100%;
+        height: 400px;
+    }
+}
+
+/*Page d'erreur ou désactivation*/
+
+img#errorPage {
+    margin-top: 1em;
+}
+
+/*Responsive de la barre de navigation*/
+@media screen and (max-width: 990px) {
+    /*Navbar*/
+    div#dropdownProfile ul.dropdown-menu {
+        position: unset;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+    }
+
+    /*.radio-button {
+        display: flex;
+        justify-content : center;
+    }*/
+
+    .carousel-inner input {
+        margin: 0 auto;
+        -webkit-appearance: radio;
+    }
+
+    .access {
+        display: none;
+    }
+
+    .bold-footer {
+        font-size: 40px!important;
+    }
+
+    .img-laptop {
+        display: none;
+    }
+
+    .img-mobile {
+        display: block;
+    }
+
+    .coordonnees, .contact, .access, .networks {
+        text-align: center;
+    }
+}
+
+/*Responsive pour les tablettes/orientation paysage pour téléphones */
+@media screen and (max-device-width: 1100px) {
+    /*Générale*/
+    h1 {
+        font-size: 3em;
+    }
+
+    .erreur {
+        font-size: 3em;
+    }
+
+    /*Navbar*/
+    .navbar-brand img {
+        height: 4em;
+    }
+
+    .nav-item, .nav-link, p {
+        font-size: 1.5em;
+    }
+
+    ul#connexion {
+        padding: 0;
+    }
+
+    #connexion i {
+        font-size: 2.5rem;
+    }
+
+    #dropdownProfile li a, #dropdownNav li a {
+        font-size: 2em;
+    }
+
+    /*.radio-button {
+        display: flex;
+        justify-content : center;
+    }*/
+
+    .carousel-inner input {
+        margin: 0 auto;
+        -webkit-appearance: radio;
+    }
+
+    /*Footer*/
+    .coordonnees h3, .contact h3, .access h3, .networks h3 {
+        font-size: 1.75em;
+    }
+
+    .coordonnees p, .contact p, .access p {
+        font-size: 1.25em;
+    }
+
+    footer i {
+        font-size: 2.5em;
+    }
+
+    div#columnLeftFooter {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    div#columnRightFooter {
+        width: 45%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    div#networkIcons {
+        float: left;
+    }
+
+    /*Page d'accueil*/
+    #fileInputUser input {
+        font-size: 1em;
+    }
+
+    #btnModal {
+        font-size: 1.5em;
+        padding: 1em;
+    }
+
+    .fichierForm form {
+        flex-direction: column;
+    }
+
+}
+
+/*Responsive pour les téléphones en mode portrait*/
+@media screen and (max-device-width: 700px) {
+    /*Général*/
+    h1 {
+        font-size: 4em;
+    }
+
+    h2 {
+        font-size: 3em;
+    }
+
+    h3 {
+        font-size: 2.5em
+    }
+
+    form {
+        padding: 0;
+    }
+
+    .flash-success, .erreur {
+        font-size: 3em;
+    }
+
+    /*Navbar*/
+    nav#mainNav {
+        padding: 2em;
+        flex-direction: column;
+    }
+
+    .navbar-brand img {
+        height: 150px;
+        margin-bottom: 30px;
+    }
+
+    button.navbar-toggler {
+        font-size: 5em;
+    }
+
+    .nav-item, .nav-link, p {
+        font-size: 2em;
+    }
+
+    #dropdownProfile li a {
+        font-size: 3em;
+    }
+
+    #connexion i {
+        font-size: 3.7rem;
+    }
+
+    .fa-user-circle:before {
+        display: none;
+        margin-right: 20px;
+    }
+
+    /*Page d'accueil*/
+    #menuImg {
+        height: 40em;
+        margin-bottom: 3em;
+    }
+
+    #fileInputUser input {
+        font-size: 1.5em;
+        margin: 1em 0;
+        border: unset;
+    }
+
+    #btnModal {
+        font-size: 2.5em;
+        padding: 30px;
+        margin: 0.5em 0;
+    }
+
+    #menuImgModal {
+        height: 46em;
+        width: 100%;
+    }
+
+    .btn-close {
+        font-size: 2.5em;
+    }
+
+    .modal-footer button {
+        font-size: 1.5em;
+        padding: 30px;
+    }
+
+    img#errorPage {
+        height: 15em;
+    }
+
+    /* Footer */
+
+    footer i {
+        font-size: 2.5em;
+        padding-bottom: 1em;
+    }
+
+    i {
+        padding-bottom: 0;
+    }
+
+    div#networkIcons {
+        float: unset;
+    }
+
+    .coordonnees, .contact, .access, .networks {
+        display: unset;
+    }
+
+    .coordonnees p, .contact p, .access p {
+        text-align: unset;
+        font-size: 2em;
+    }
+
+    .coordonnees h3, .contact h3, .access h3, .networks h3 {
+        text-align: unset;
+        font-size: 3em;
+    }
+
+    /* Modal titre */
+    .modal-title {
+        font-size: 2.25em;
+    }
+
+}
+
+/*formulaire de connexion*/
+
+#login h6 {
+    font-size: 15px;
+    margin-bottom: 40px;
+}
+
+#formConnexion {
+    padding: 0;
+    display: unset;
+}
+
+#formConnexion input {
+    height: 25px;
+}
+
+#formConnexion label {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+p#login {
+    display: block;
+    bottom: 0;
+}
+
+input#rememberMe {
+    margin-right: 1rem;
+}
+
+#btnRegister {
+    background-color: dimgrey;
+    color: #fff;
+    border-style: none;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 0.25rem;
+}
+
+#login a.btn.btn-info {
+    padding: 10px;
+    font-size: 15px;
+}
+
+#loginSubmit {
+    margin-top: 20px;
+}
+
+label span {
+    color: red;
+}
+
+h3#italic {
+    font-style: italic;
+    margin-top: 1.5em;
+}
+
+.erreur {
+    color: red;
+    font-weight: bold;
+    padding: 5px;
+    font-size: 16px;
+}
+
+.erreur li {
+    list-style: none;
+    position: relative;
+}
+
+.inputConnexion {
+    margin-right: 15%;
+    margin-left: 15%;
+}
+
+/*Responsive pour les téléphones en mode portrait*/
+@media screen and (max-device-width: 700px) {
+    /*Général*/
+    h1 {
+        font-size: 4em;
+    }
+
+    h2 {
+        font-size: 3em;
+    }
+
+    h3 {
+        font-size: 2.5em
+    }
+
+    form {
+        padding: 0;
+    }
+
+    .flash-success, .erreur {
+        font-size: 3em;
+    }
+
+    /*Navbar*/
+    nav#mainNav {
+        padding: 2em;
+        flex-direction: column;
+    }
+
+    .navbar-brand img {
+        height: 150px;
+        margin-bottom: 30px;
+    }
+
+    button.navbar-toggler {
+        font-size: 5em;
+    }
+
+    .nav-item, .nav-link, p {
+        font-size: 2em;
+    }
+
+    #dropdownProfile li a {
+        font-size: 3em;
+    }
+
+    #connexion i {
+        font-size: 3.7rem;
+    }
+
+    .fa-user-circle:before {
+        display: none;
+        margin-right: 20px;
+    }
+
+    /* Footer */
+
+    footer i {
+        font-size: 2.5em;
+        padding-bottom: 1em;
+    }
+
+    i {
+        padding-bottom: 0;
+    }
+
+    div#networkIcons {
+        float: unset;
+    }
+
+    .coordonnees, .contact, .access, .networks {
+        display: unset;
+    }
+
+    .coordonnees p, .contact p, .access p {
+        text-align: unset;
+        font-size: 2em;
+    }
+
+    .coordonnees h3, .contact h3, .access h3, .networks h3 {
+        text-align: unset;
+        font-size: 3em;
+    }
+
+}
