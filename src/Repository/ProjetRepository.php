@@ -39,20 +39,17 @@ class ProjetRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Projet[] Returns an array of Projet objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->andWhere('p.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('p.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @return Projet[] Returns an array of Sorties objects
+     */
+    public function findBySorties(): array
+    {
+        return $this->createQueryBuilder('s')
+            ->orderBy('s.date_demande_projet', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
 //    public function findOneBySomeField($value): ?Projet
 //    {

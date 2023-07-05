@@ -20,7 +20,7 @@ class Document
     private ?string $nom_fichier = null;
 
     #[ORM\ManyToOne(inversedBy: 'document')]
-    private ?projet $document_projet = null;
+    private ?Projet $document_projet = null;
 
     public function getId(): ?int
     {
@@ -51,12 +51,12 @@ class Document
         return $this;
     }
 
-    public function getDocumentProjet(): ?projet
+    public function getDocumentProjet(): ?Projet
     {
         return $this->document_projet;
     }
 
-    public function setDocumentProjet(?projet $document_projet): self
+    public function setDocumentProjet(?Projet $document_projet): self
     {
         $this->document_projet = $document_projet;
 

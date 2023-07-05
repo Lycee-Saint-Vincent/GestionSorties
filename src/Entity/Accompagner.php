@@ -15,10 +15,10 @@ class Accompagner
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToMany(targetEntity: enseignant::class, inversedBy: 'Accompagnant')]
+    #[ORM\ManyToMany(targetEntity: Enseignant::class, inversedBy: 'Accompagnant')]
     private Collection $enseignant_id;
 
-    #[ORM\ManyToMany(targetEntity: projet::class, inversedBy: 'Accompagnant')]
+    #[ORM\ManyToMany(targetEntity: Projet::class, inversedBy: 'Accompagnant')]
     private Collection $projet_id;
 
     public function __construct()
@@ -40,7 +40,7 @@ class Accompagner
         return $this->enseignant_id;
     }
 
-    public function addEnseignantId(enseignant $enseignantId): self
+    public function addEnseignantId(Enseignant $enseignantId): self
     {
         if (!$this->enseignant_id->contains($enseignantId)) {
             $this->enseignant_id->add($enseignantId);
@@ -49,7 +49,7 @@ class Accompagner
         return $this;
     }
 
-    public function removeEnseignantId(enseignant $enseignantId): self
+    public function removeEnseignantId(Enseignant $enseignantId): self
     {
         $this->enseignant_id->removeElement($enseignantId);
 
@@ -57,14 +57,14 @@ class Accompagner
     }
 
     /**
-     * @return Collection<int, projet>
+     * @return Collection<int, Projet>
      */
     public function getProjetId(): Collection
     {
         return $this->projet_id;
     }
 
-    public function addProjetId(projet $projetId): self
+    public function addProjetId(Projet $projetId): self
     {
         if (!$this->projet_id->contains($projetId)) {
             $this->projet_id->add($projetId);
@@ -73,7 +73,7 @@ class Accompagner
         return $this;
     }
 
-    public function removeProjetId(projet $projetId): self
+    public function removeProjetId(Projet $projetId): self
     {
         $this->projet_id->removeElement($projetId);
 

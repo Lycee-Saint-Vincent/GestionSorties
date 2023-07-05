@@ -88,13 +88,6 @@ a, a:hover {
     display: none;
 }
 
-.modal-dialog, menu {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    max-width: none!important;
-}
-
 /*Barre de navigation*/
 
 nav p, nav ul {

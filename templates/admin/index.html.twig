@@ -1,5 +1,135 @@
-{% if app.user %}
-    <div class="mb-3">
-        You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Liste des sorties</h1>
+    <div>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Ajouter une sortie
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Veuillez préciser le type de sortie</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <a href="" class="btn btn-secondary" id="btnAjout">
+                            Sortie scolaire
+                        </a>
+                        <a href="" class="btn btn-secondary" id="btnAjout">
+                            Voyage
+                        </a>
+                        <a href="" class="btn btn-secondary" id="btnAjout">
+                            Echange
+                        </a>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Retour</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-{% endif %}
+{#
+<div id="formFilter">
+    <div id="filtre">
+        {{ form_start(form) }}
+        <div>
+            {{ form_help(form.nom) }}
+        </div>
+        <div>
+            <div class="selectFiltre">
+                <span>{{ form_label(form.nom) }} </span>
+                {{ form_widget(form.nom) }}
+            </div>
+            <div class="selectFiltre">
+                <span>{{ form_label(form.date) }}</span>
+                {{ form_widget(form.date) }}
+            </div>
+        </div>
+        <div>
+            <div class="selectFiltre">
+                <span>{{ form_label(form.cloture) }}</span>
+                {{ form_widget(form.cloture) }}
+            </div>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-info">
+                Afficher
+            </button>
+        </div>
+        {{ form_end(form) }}
+    </div>
+</div>#}
+    <div class="table-responsive-lg">
+        <div>
+            {# {{ knp_pagination_render(sorties) }} #}
+        </div>
+        <table class="table tableAdmin">
+            <thead>
+            <tr>
+                <th>Nom sortie</th>
+                <th>Organisateur</th>
+                <th>Date/heure de début</th>
+                <th>Date/heure de fin</th>
+                <th>Mode de transport</th>
+                <th>Classes</th>
+                <th>Résa Sandwich</th>
+                <th>Détails sortie</th>
+                <th>Pré-validation</th>
+                <th>Validation</th>
+                <th>Clôturé</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for sortie in sorties %}
+                <tr>
+                    <td>{{ sortie.nomProjet}}</td>
+                    <td>{# Organisateur #}</td>
+                    <td>{{ sortie.heureDebutSortie|date }}</td>
+                    <td>{{ sortie.heureFinSortie|date }}</td>
+                    <td>{# Mode de transport #}</td>
+                    <td>{# Classes #}</td>
+                    <td>{{ sortie.besoinSandwich }}</td>
+                    <td>
+                        <a href="#" class="btn btn-primary">
+                            <i class="far fa-edit"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-success">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                            </svg>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-danger">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                            </svg>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-danger">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                            </svg>
+                        </a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="9" class="erreur">Aucune sortie n'a été réalisée !</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div>
+            {# {{ knp_pagination_render(sorties) }} #}
+        </div>
+    </div>
+{% endblock %}

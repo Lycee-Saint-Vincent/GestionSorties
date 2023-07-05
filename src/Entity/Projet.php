@@ -77,13 +77,10 @@ class Projet
     private Collection $Accompagnant;
 
     #[ORM\ManyToOne(inversedBy: 'projet')]
-    private ?enseignant $enseignant_projet = null;
+    private ?Enseignant $enseignant_projet = null;
 
     #[ORM\ManyToOne(inversedBy: 'projet')]
-    private ?categorie $categorie_projet = null;
-
-    #[ORM\ManyToOne(inversedBy: 'projet')]
-    private ?financement $financement_projet = null;
+    private ?Categorie $categorie_projet = null;
 
     #[ORM\OneToMany(mappedBy: 'document_projet', targetEntity: Document::class)]
     private Collection $document;
@@ -91,12 +88,34 @@ class Projet
     #[ORM\ManyToMany(targetEntity: Contenir::class, mappedBy: 'id_projet')]
     private Collection $ContenirProjets;
 
+    #[ORM\Column(nullable: true)]
+    private ?float $cout_annexe = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $date_debut_echange = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $date_fin_echange = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?float $cout_hebergement_restauration = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $commentaire_projet = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?float $effectif_estime_projet = null;
+
+    #[ORM\OneToMany(mappedBy: 'projet_activite', targetEntity: Activite::class)]
+    private Collection $activite_projet;
+
     public function __construct()
     {
         $this->Accompagnant = new ArrayCollection();
         $this->document = new ArrayCollection();
         $this->ContenirEleves = new ArrayCollection();
         $this->ContenirProjets = new ArrayCollection();
+        $this->activite_projet = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -359,38 +378,26 @@ class Projet
         return $this;
     }
 
-    public function getEnseignantProjet(): ?enseignant
+    public function getEnseignantProjet(): ?Enseignant
     {
         return $this->enseignant_projet;
     }
 
-    public function setEnseignantProjet(?enseignant $enseignant_projet): self
+    public function setEnseignantProjet(?Enseignant $enseignant_projet): self
     {
         $this->enseignant_projet = $enseignant_projet;
 
         return $this;
     }
 
-    public function getCategorieProjet(): ?categorie
+    public function getCategorieProjet(): ?Categorie
     {
         return $this->categorie_projet;
     }
 
-    public function setCategorieProjet(?categorie $categorie_projet): self
+    public function setCategorieProjet(?Categorie $categorie_projet): self
     {
         $this->categorie_projet = $categorie_projet;
-
-        return $this;
-    }
-
-    public function getFinancementProjet(): ?financement
-    {
-        return $this->financement_projet;
-    }
-
-    public function setFinancementProjet(?financement $financement_projet): self
-    {
-        $this->financement_projet = $financement_projet;
 
         return $this;
     }
@@ -447,6 +454,108 @@ class Projet
     {
         if ($this->ContenirProjets->removeElement($contenirProjet)) {
             $contenirProjet->removeIdProjet($this);
+        }
+
+        return $this;
+    }
+
+    public function getCoutAnnexe(): ?float
+    {
+        return $this->cout_annexe;
+    }
+
+    public function setCoutAnnexe(?float $cout_annexe): self
+    {
+        $this->cout_annexe = $cout_annexe;
+
+        return $this;
+    }
+
+    public function getDateDebutEchange(): ?\DateTimeInterface
+    {
+        return $this->date_debut_echange;
+    }
+
+    public function setDateDebutEchange(?\DateTimeInterface $date_debut_echange): self
+    {
+        $this->date_debut_echange = $date_debut_echange;
+
+        return $this;
+    }
+
+    public function getDateFinEchange(): ?\DateTimeInterface
+    {
+        return $this->date_fin_echange;
+    }
+
+    public function setDateFinEchange(?\DateTimeInterface $date_fin_echange): self
+    {
+        $this->date_fin_echange = $date_fin_echange;
+
+        return $this;
+    }
+
+    public function getCoutHebergementRestauration(): ?float
+    {
+        return $this->cout_hebergement_restauration;
+    }
+
+    public function setCoutHebergementRestauration(?float $cout_hebergement_restauration): self
+    {
+        $this->cout_hebergement_restauration = $cout_hebergement_restauration;
+
+        return $this;
+    }
+
+    public function getCommentaireProjet(): ?string
+    {
+        return $this->commentaire_projet;
+    }
+
+    public function setCommentaireProjet(?string $commentaire_projet): self
+    {
+        $this->commentaire_projet = $commentaire_projet;
+
+        return $this;
+    }
+
+    public function getEffectifEstimeProjet(): ?float
+    {
+        return $this->effectif_estime_projet;
+    }
+
+    public function setEffectifEstimeProjet(?float $effectif_estime_projet): self
+    {
+        $this->effectif_estime_projet = $effectif_estime_projet;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Activite>
+     */
+    public function getActiviteProjet(): Collection
+    {
+        return $this->activite_projet;
+    }
+
+    public function addActiviteProjet(Activite $activiteProjet): self
+    {
+        if (!$this->activite_projet->contains($activiteProjet)) {
+            $this->activite_projet->add($activiteProjet);
+            $activiteProjet->setProjetActivite($this);
+        }
+
+        return $this;
+    }
+
+    public function removeActiviteProjet(Activite $activiteProjet): self
+    {
+        if ($this->activite_projet->removeElement($activiteProjet)) {
+            // set the owning side to null (unless already changed)
+            if ($activiteProjet->getProjetActivite() === $this) {
+                $activiteProjet->setProjetActivite(null);
+            }
         }
 
         return $this;

@@ -35,10 +35,10 @@ class Eleve
     private Collection $ContenirEleves;
 
     #[ORM\ManyToOne(inversedBy: 'eleve')]
-    private ?classe $id_classe = null;
+    private ?Classe $id_classe = null;
 
     #[ORM\ManyToOne(inversedBy: 'eleve')]
-    private ?groupe $id_groupe = null;
+    private ?Groupe $id_groupe = null;
 
     public function __construct()
     {
@@ -137,24 +137,24 @@ class Eleve
         return $this;
     }
 
-    public function getIdClasse(): ?classe
+    public function getIdClasse(): ?Classe
     {
         return $this->id_classe;
     }
 
-    public function setIdClasse(?classe $id_classe): self
+    public function setIdClasse(?Classe $id_classe): self
     {
         $this->id_classe = $id_classe;
 
         return $this;
     }
 
-    public function getIdGroupe(): ?groupe
+    public function getIdGroupe(): ?Groupe
     {
         return $this->id_groupe;
     }
 
-    public function setIdGroupe(?groupe $id_groupe): self
+    public function setIdGroupe(?Groupe $id_groupe): self
     {
         $this->id_groupe = $id_groupe;
 

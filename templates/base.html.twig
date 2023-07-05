@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Réservation Snack St-Vincent</title>
+    <title>Gestion des sorties</title>
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon_io/apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon_io/favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon_io/favicon-16x16.png') }}">
@@ -44,11 +44,30 @@
         </ul>
         <ul class="nav-item ml-auto dropdown" id="connexion">
             <li>
+                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                     <div class="dropdown" id="dropdownProfile">
+                        <a class="nav-link dropdown-toggle" href="#" role="link" id="dropdownMenuLink"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user-circle"> Mon Profil</i>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="accesProfile">
+                            {# <li>
+                                <a class="dropdown-item"
+                                   href="{{ path('profile_admin',{'userTokenHash': app.user.tokenHash}) }}">
+                                    Voir profil
+                                </a>
+                            </li> #}
+                            {# <li><a class="dropdown-item"
+                                   href="{{ path('profile_edit',{'userTokenHash': app.user.tokenHash}) }}">Éditer
+                                    votre profil</a></li> #}
+                            <li><a class="dropdown-item" href="{{ path('app_logout') }}">Se déconnecter</a></li>
+                        </ul>
                     </div>
+                {% else %}
                     <a href="{{ path('app_login') }}">
                         <i class="fas fa-user-circle">Se connecter</i>
                     </a>
+                {% endif %}
             </li>
         </ul>
     </div>
@@ -58,7 +77,7 @@
     <div id="footerContent">
         <div id="columnLeftFooter">
             <div class="coordonnees">
-                <i class="fas"><h3 class="bold-footer">Réservation sandwich Saint-Vincent</h3></i>
+                <i class="fas"><h3 class="bold-footer">Gestion des sorties - Saint-Vincent</h3></i>
                 <ol>
                     <li>
                         <p>30 Rue de Meaux</p>

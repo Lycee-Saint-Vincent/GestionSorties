@@ -15,11 +15,20 @@ class Contenir
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToMany(targetEntity: projet::class, inversedBy: 'ContenirProjets')]
+    #[ORM\ManyToMany(targetEntity: Projet::class, inversedBy: 'ContenirProjets')]
     private Collection $id_projet;
 
     #[ORM\ManyToMany(targetEntity: Eleve::class, inversedBy: 'ContenirEleves')]
     private Collection $id_eleve;
+
+    #[ORM\Column(length: 255)]
+    private ?string $commentaire = null;
+
+    #[ORM\Column]
+    private ?float $prise_charge_culture = null;
+
+    #[ORM\Column]
+    private ?float $prise_charge_lycee = null;
 
     public function __construct()
     {
@@ -33,14 +42,14 @@ class Contenir
     }
 
     /**
-     * @return Collection<int, projet>
+     * @return Collection<int, Projet>
      */
     public function getIdProjet(): Collection
     {
         return $this->id_projet;
     }
 
-    public function addIdProjet(projet $idProjet): self
+    public function addIdProjet(Projet $idProjet): self
     {
         if (!$this->id_projet->contains($idProjet)) {
             $this->id_projet->add($idProjet);
@@ -49,7 +58,7 @@ class Contenir
         return $this;
     }
 
-    public function removeIdProjet(projet $idProjet): self
+    public function removeIdProjet(Projet $idProjet): self
     {
         $this->id_projet->removeElement($idProjet);
 
@@ -76,6 +85,42 @@ class Contenir
     public function removeIdEleve(Eleve $idEleve): self
     {
         $this->id_eleve->removeElement($idEleve);
+
+        return $this;
+    }
+
+    public function getCommentaire(): ?string
+    {
+        return $this->commentaire;
+    }
+
+    public function setCommentaire(string $commentaire): self
+    {
+        $this->commentaire = $commentaire;
+
+        return $this;
+    }
+
+    public function getPriseChargeCulture(): ?float
+    {
+        return $this->prise_charge_culture;
+    }
+
+    public function setPriseChargeCulture(float $prise_charge_culture): self
+    {
+        $this->prise_charge_culture = $prise_charge_culture;
+
+        return $this;
+    }
+
+    public function getPriseChargeLycee(): ?float
+    {
+        return $this->prise_charge_lycee;
+    }
+
+    public function setPriseChargeLycee(float $prise_charge_lycee): self
+    {
+        $this->prise_charge_lycee = $prise_charge_lycee;
 
         return $this;
     }
