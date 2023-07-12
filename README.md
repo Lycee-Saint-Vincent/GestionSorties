@@ -8,3 +8,8 @@ Version de Symfony : 6.2.10
 Version de PHP : 8.1.10
 
 Version de Composer : 2.1.8
+
+utilisateur admin :
+	
+	email : valentin.arthur1000@gmail.com
+	mot de passe : admin
